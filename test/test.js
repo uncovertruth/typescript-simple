@@ -96,7 +96,7 @@ describe('typescript-simple', function() {
             var expected = "var x = 'some string';" + eol;
             assert.equal(tss.compile(src), expected);
         });
-        
+
         it('reference imports are ignored', function() {
             var src = "/// <reference path='./typings/tsd'/>" + eol
                     + "var x: number = 'some string';";
@@ -153,11 +153,16 @@ describe('typescript-simple', function() {
 
     context('tss outDir option is specified', function() {
         var tss;
-        beforeEach(function() {
+        it('compares output file names with the name with outDir', function() {
             tss = new TypeScriptSimple({outDir: 'built/'}, false);
+            var src = "var x = 123;";
+            assert.doesNotThrow(function() {
+                tss.compile(src);
+            });
         });
 
-        it('compares output file names with the name with outDir', function() {
+        it('compares output file names with with rootDir relative path', function() {
+            tss = new TypeScriptSimple({rootDir: './'}, false);
             var src = "var x = 123;";
             assert.doesNotThrow(function() {
                 tss.compile(src);
