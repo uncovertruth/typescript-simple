@@ -152,7 +152,7 @@ describe('typescript-simple', function() {
     });
 
     context('tss outDir option is specified', function() {
-        var tss
+        var tss;
         it('compares output file names with the name with outDir', function() {
             tss = new TypeScriptSimple({outDir: 'built/'}, false);
             var src = "var x = 123;";
