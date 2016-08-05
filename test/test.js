@@ -161,8 +161,8 @@ describe('typescript-simple', function() {
             });
         });
 
-        it('compares output file names with the name with rootDir', function() {
-            tss = new TypeScriptSimple({rootDir: '.'}, false);
+        it('compares output file names with with rootDir relative path', function() {
+            tss = new TypeScriptSimple({rootDir: './'}, false);
             var src = "var x = 123;";
             assert.doesNotThrow(function() {
                 tss.compile(src);
